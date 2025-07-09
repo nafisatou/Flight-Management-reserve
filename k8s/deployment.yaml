@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flight-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight-reservation
+  template:
+    metadata:
+      labels:
+        app: flight-reservation
+    spec:
+      containers:
+        - name: app
+          image: yourdockerhub/flight-reservation:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/flightdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: your_password
