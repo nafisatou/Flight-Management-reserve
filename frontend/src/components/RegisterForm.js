@@ -8,7 +8,7 @@ export default function RegisterForm() {
   const submit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/users/register", user);
+      const res = await axios.post("http://10.180.90.39:30081/api/users/register", user);
       setMsg(`✅ Registered ${res.data.firstName}!`);
       setUser({ firstName: "", lastName: "", email: "" });
     } catch {

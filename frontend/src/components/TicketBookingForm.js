@@ -19,7 +19,7 @@ export default function TicketBookingForm({ users, onTicketBooked }) {
     setMessage("");
 
     try {
-      const res = await axios.post("http://localhost:8080/api/flights/book", ticket);
+      const res = await axios.post("http://10.180.90.39:30081/api/flights/book", ticket);
       setMessage(`Ticket booked successfully for ${res.data.passengerName}!`);
       setTicket({
         bookingDate: "",

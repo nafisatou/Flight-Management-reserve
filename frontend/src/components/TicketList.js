@@ -5,7 +5,7 @@ export default function TicketList() {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/flights/search")
+    axios.get("http://10.180.90.39:30081/api/flights/search")
       .then(res => setTickets(res.data))
       .catch(() => setTickets([]));
   }, []);
