@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/nkwenti-severian-ndongtsop/flight-ui:latest
+          image: ghcr.io/nafisatou/flight-ui:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

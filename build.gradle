@@ -21,11 +21,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
-    // Avoid loading test framework automatically which is deprecated
-    testFramework = null
-}
 
 tasks.named('test') {
     // Show full stack traces on test failures

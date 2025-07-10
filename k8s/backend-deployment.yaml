@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/nkwenti-severian-ndongtsop/flight-api:latest
+          image: ghcr.io/nafisatou/flight-api:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
           env:
             - name: DB_HOST
               valueFrom:
@@ -56,6 +56,6 @@ spec:
   selector:
     app: backend
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 8080
+      targetPort: 8080
       nodePort: 30081 
