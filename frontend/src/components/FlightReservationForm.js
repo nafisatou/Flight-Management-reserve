@@ -7,7 +7,7 @@ export default function FlightReservationForm() {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/users") // implement this endpoint
+    axios.get("http://10.180.90.39:30081/api/users") // implement this endpoint
       .then(res => {
         setUsers(res.data);
         if (res.data.length) setTicket(prev => ({ ...prev, passengerName: `${res.data[0].firstName} ${res.data[0].lastName}` }));
@@ -18,7 +18,7 @@ export default function FlightReservationForm() {
   const submit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/flights/book", ticket);
+      const res = await axios.post("http://10.180.90.39:30081/api/flights/book", ticket);
       setMsg(`✅ Booked Sucessfully`);
       setTicket({ ...ticket, destinationAddress: "", kickoffAddress: "", bookingDate: "" });
     } catch {

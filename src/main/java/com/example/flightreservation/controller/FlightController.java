@@ -26,6 +26,11 @@ public class FlightController {
         return flightRepo.save(ticket);
     }
 
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "Flight Reservation Service is up and running!";
+    }
+
     @GetMapping("/search")
     public List<FlightTicket> search(
         @RequestParam(required = false) String date,
