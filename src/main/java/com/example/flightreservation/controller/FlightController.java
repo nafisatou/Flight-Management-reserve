@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,7 @@ public class FlightController {
     private FlightTicketRepository flightRepo;
 
     @PostMapping("/book")
-    public FlightTicket book(@RequestBody FlightTicket ticket) {
+    public FlightTicket book( @RequestBody FlightTicket ticket) {
         return flightRepo.save(ticket);
     }
 
@@ -46,8 +47,12 @@ public class FlightController {
                 bookingDate, dest, kick
             );
         } else {
-            // fallback for null date
             return flightRepo.findByDestinationAddressContainingOrKickoffAddressContaining(dest, kick);
         }
+    }
+
+    @GetMapping("/all")
+    public List<FlightTicket> getAllTickets() {
+        return flightRepo.findAll();
     }
 }
