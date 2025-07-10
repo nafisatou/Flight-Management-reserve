@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function TicketBookingForm({ users, onTicketBooked }) {
+export default function TicketBookingForm({ onTicketBooked }) {
   const [ticket, setTicket] = useState({
     bookingDate: "",
     destinationAddress: "",
@@ -35,19 +35,19 @@ export default function TicketBookingForm({ users, onTicketBooked }) {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Book Flight Ticket</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Passenger Name
-          <select name="passengerName" value={ticket.passengerName} onChange={handleChange} required>
-            <option value="">Select User</option>
-            {users.map(u => (
-              <option key={u.id} value={`${u.firstName} ${u.lastName}`}>
-                {u.firstName} {u.lastName}
-              </option>
-            ))}
-          </select>
+          <input
+            type="text"
+            name="passengerName"
+            value={ticket.passengerName}
+            onChange={handleChange}
+            placeholder="Enter passenger name"
+            required
+          />
         </label>
         <label>
           Booking Date
@@ -83,7 +83,7 @@ export default function TicketBookingForm({ users, onTicketBooked }) {
         </label>
         <button type="submit">Book Ticket</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p style={{ marginTop: "20px", textAlign: "center", color: "#006400" }}>{message}</p>}
     </div>
   );
 }
